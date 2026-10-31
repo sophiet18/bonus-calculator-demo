@@ -1,77 +1,70 @@
 # Bonus Calculator Demo
-### Less manual checking. More clarity.
+### Bonus, Explained.
 
-A core administrative workflow prototype built through AI-assisted development: load fictional data, apply consistent rules, understand results, and export a report.
+Designed by Sophie Tai · Built with AI assistance.
 
-> Review draft. All six automated Node.js tests pass. Browser checks and PNG visual inspection remain pending. No live demo is deployed.
+A core administrative workflow prototype: load fictional data, apply consistent rules, understand results, and export a report.
+
+> Six automated Node.js tests passed in the initial review. Browser interactions, spreadsheet compatibility, and PNG visual inspection are not fully verified. A live URL and screenshot will be added after verification.
 
 ## The problem
-Rule-based administrative work involves more than calculating a number. Inputs need checking, eligibility needs explaining, and individual results need consolidating. This prototype brings those steps into one repeatable workflow without attempting to become a complete payroll product.
+Rule-based administration involves checking inputs, calculating eligibility, explaining outcomes, and preparing reports. This prototype brings those steps into one small workflow rather than attempting to become a payroll product. No measured time savings or accuracy improvements are claimed.
 
 ## Try it locally
-Serve the project directory using a static web server. With Python installed, run `python -m http.server 8000`, then open `http://localhost:8000`. Do not open the HTML directly: JavaScript modules require a server.
+Serve the repository with a static server, for example `python -m http.server 8000`, then open `http://localhost:8000`. JavaScript modules require a server rather than directly opening the HTML file.
 
-Load the sample team, edit revenue or quality, calculate, then export CSV or a PNG report. No package installation is needed to use the browser app. Inputs remain in memory only; refreshing clears changes.
+Load the sample team, edit revenue or quality, calculate, and export CSV or PNG. No package installation is required for the browser app. Inputs remain in memory; refreshing clears changes.
 
 ## Core workflow
-- Six fictional employees, identified by first names and sample IDs.
-- Decimal eligible project revenue and quality inputs.
-- Validation and explainable eligibility decisions.
-- Group totals based on individually rounded bonuses.
-- CSV report with inputs, results, explanations, period, rule version, and total.
-- PNG report with first names, IDs, revenue, quality, rates, bonuses, eligibility, explanations, summary totals, and fictional-data label.
-- Changing inputs clears results and disables both exports until recalculation.
-
-PNG is generated from the calculated data using browser Canvas. It is a purpose-designed report image, not a device screenshot or a capture of the webpage. It includes all six records regardless of screen position and requires no third-party capture library.
+- Six fictional employees with first names and sample IDs.
+- Decimal eligible project revenue and quality scores.
+- Validation, eligibility explanations, and group totals.
+- CSV containing inputs, rates, bonuses, explanations, period, rule version, and total.
+- PNG report generated using browser Canvas, not a device screenshot; all six records are included regardless of screen position.
+- Editing inputs clears results and disables exports until recalculation.
 
 ## Fictional rules
 Example Office Services · September 2026 · HKD · `demo-2.0`.
 
-| Quality | Eligible project revenue | Rate |
+| Quality | Eligible revenue | Rate |
 |---|---|---:|
 | Below 90 | Any | 0% |
 | At least 90 | Below HK$100,000.00 | 0% |
 | At least 90 | HK$100,000.00 to below HK$500,000.00 | 8% |
 | At least 90 | HK$500,000.00 or more | 12% |
 
-The rate applies to all eligible revenue, not just the amount above a threshold. Currency inputs accept up to two decimal places and are converted to integer cents. Calculate each bonus to the nearest cent, with half-cent ties up; sum rounded individual bonuses. With these particular rates, exact half-cent ties do not occur, but the rounding policy is explicit.
-
-The input ceiling is HK$1,000,000,000.00 per record to bound integer calculations. This is a demo validation limit, not a bonus cap. Quality accepts 0–100 with at most one decimal place. Enter plain decimal numbers without commas or currency symbols.
+The selected rate applies to all revenue, not just the amount above a threshold. Currency accepts two decimal places and is converted to integer cents. Each bonus is rounded to cents, half-cent ties up, before summing. These rates do not generate exact half-cent ties. Revenue is limited to HK$1,000,000,000.00 per record for bounded arithmetic, not as a payout cap. Quality accepts 0–100 with at most one decimal place. Enter amounts without commas or currency symbols.
 
 Expected bonuses: Avery HK$0.00; Jordan HK$8,000.00; Casey HK$34,301.24; Morgan HK$60,000.00; Riley HK$0.00; Taylor HK$149,481.47. Expected total: HK$251,782.71; four eligible employees.
 
-## Design choices
-Plain HTML, CSS, and modular JavaScript keep the single-page prototype lightweight. Rules, calculations, rendering, and report exports have distinct responsibilities. Record text uses DOM text properties rather than HTML interpolation. CSV fields are quoted, embedded quotes escaped, and formula-like text prefixed; spreadsheet-specific checks remain necessary.
+## Design and possible adaptations
+Plain HTML, CSS, and modular JavaScript separate rules, calculations, and interaction. The interface uses navy, maroon accents, and white text; the report uses a white body with matching accents. Record text is rendered with DOM text properties. CSV quoting and formula-like text handling are included, but spreadsheet-specific checks remain necessary.
 
-## Possible adaptations — not implemented
-Role-based eligibility; service-period prorating; alternative qualification routes; approved exceptions; different periods; custom report fields. These require separate requirements and verification, not just a toggle in this demo.
+Possible adaptations—not implemented—include role-based eligibility, service-period adjustments, alternative qualification routes, approved exceptions, reporting periods, and custom report fields. Each needs separate requirements and verification.
 
 ## My role and AI assistance
-I defined the administrative problem, confidentiality boundaries, core workflow, first-name-only samples, realistic monetary inputs, and the need for image export. AI proposed the fictional rules and assisted with implementation, tests, and documentation. I do not claim every line was manually written.
+I defined the administrative problem, confidentiality boundaries, workflow, first-name-only samples, monetary inputs, image export requirement, and visual direction. AI proposed the fictional rules and assisted with implementation, tests, and documentation. I do not claim every line was manually written. The AI assistant ran the six automated tests; my own full browser and export checks remain pending.
 
-The six automated tests were run by the AI assistant in Node.js and passed. My own browser and visual checks remain pending; automated results are not a claim of complete verification. No measured time savings or accuracy improvements are claimed.
+## Files and verification
+`index.html` and `styles.css`: interface. `rules.js`: fictional configuration and samples. `calculator.js`: validation, integer-cent calculations, CSV. `app.js`: interaction and PNG rendering. `calculator.test.js`: tests. `package.json`: ES modules and test command.
 
-## Files
-`rules.js`: fictional rules and samples. `calculator.js`: validation, integer-cent calculations, and CSV serialization. `app.js`: interaction and PNG rendering. `index.html` / `styles.css`: interface. `calculator.test.js`: tests. `package.json`: ES modules and test command.
+With Node.js 20+ installed, run `npm test`. Six initial tests passed, covering sample outputs, totals, revenue and quality boundaries, rounding, invalid data, and basic CSV handling. This is not complete browser or security verification.
 
-## Verification status
-With Node.js 20+ installed, run `npm test`. Automated cases cover sample outputs, totals, monetary thresholds, quality thresholds, rounding, invalid data, and basic CSV handling. All six automated tests passed in Node.js in the review environment. This does not verify browser interactions, downloads, or PNG appearance.
-
-Manual checks, all pending:
-- [ ] Confirm six sample results, four eligible, and HK$251,782.71 total.
-- [ ] Validate empty, negative, malformed, excessive-precision, and excessive-value inputs.
-- [ ] Confirm editing clears results and disables both exports.
-- [ ] Confirm reset restores all samples.
-- [ ] Compare PNG and CSV with on-screen results, including decimal cents.
-- [ ] Confirm PNG includes all records on mobile and desktop, with no clipped content.
-- [ ] Confirm exported files download in intended browsers.
-- [ ] Check CSV in the intended spreadsheet application.
+Manual verification checklist:
+- [ ] Confirm six bonuses, four eligible employees, and HK$251,782.71 total.
+- [ ] Check empty, negative, malformed, excessive-precision, and excessive-value inputs.
+- [ ] Confirm editing invalidates results and reset restores samples.
+- [ ] Compare screen, CSV, and PNG results and decimal cents.
+- [ ] Check full PNG content, readability, and download behaviour.
+- [ ] Open CSV in the intended spreadsheet application.
 - [ ] Check keyboard navigation, focus, announcements, narrow screens, and console errors.
-- [ ] Confirm generated PNG text and calculations are legible.
+
+## Ownership and reuse
+This project is published for portfolio review and demonstration. No open-source licence is granted. Except where permitted by applicable law or GitHub's terms, permission is required to reproduce, redistribute, or adapt protected project materials. Please do not present this project as your own work.
+
+Project attribution: Sophie Tai, with AI assistance. This notice does not claim exclusive rights over unprotectable ideas, mathematical concepts, third-party materials, or material not eligible for copyright protection. Attribution and reuse notices do not technically prevent copying or override GitHub's public-repository permissions. The name has not been checked for trademark availability.
 
 ## Privacy and limitations
-All data and rules are fictional and independently authored for this demo. No work-repository files were copied. Do not enter real data. The app has no database, persistence, analytics, external calculation API, authentication, approval flow, or audit trail. Hosting providers may retain normal access logs. Downloaded reports remain on the visitor's device.
+All rules and samples are fictional and independently authored for the demo. No private work-repository files were copied. Do not enter real employee data. The app has no database, persistence, analytics, external calculation API, authentication, approvals, or audit history. Hosting providers may retain normal access logs; downloaded reports remain on the visitor's device.
 
-This is not payroll software, compensation advice, or a production-ready employee system. There is no tax or statutory entitlement calculation. Browser-visible rules cannot be treated as confidential. Image exports are fixed-layout reports designed for the six-record demo, not an unlimited reporting engine.
-
-A screenshot and verified live link will be added later.
+This is not payroll software, compensation advice, or a production-ready employee system. Tax and statutory entitlements are not calculated. Browser-visible rules are not confidential. PNG exports are fixed-layout reports for the six-record demo, not an unlimited reporting engine.
