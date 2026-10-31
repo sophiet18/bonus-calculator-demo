@@ -5,7 +5,17 @@ Designed by Sophie Tai · Built with Perplexity.
 
 A core administrative workflow prototype: load fictional data, apply consistent rules, understand results, and export a report.
 
-> Six automated Node.js tests passed in the initial review. Browser interactions, spreadsheet compatibility, and PNG visual inspection are not fully verified. A live URL and screenshot will be added after verification.
+## Live demo
+
+[Open Bonus, Explained.](https://bonus-calculator-demo.vercel.app/)
+
+Use fictional sample data only. Changes are not saved.
+
+## Verification status
+
+Six automated Node.js tests passed in the initial review. Supplied calculator screenshots and an example exported report have been visually reviewed. This is not complete end-to-end browser verification. CSV spreadsheet compatibility, invalid-input browser behaviour, keyboard navigation, and broader browser checks remain pending.
+
+Screenshot uploads to this repository are pending. The selected calculator image shows the sample-data-loaded stage, not calculated results; the exported report is a separate output example.
 
 ## The problem
 Rule-based administration involves checking inputs, calculating eligibility, explaining outcomes, and preparing reports. This prototype brings those steps into one small workflow rather than attempting to become a payroll product. No measured time savings or accuracy improvements are claimed.
@@ -45,7 +55,7 @@ Possible adaptations—not implemented—include role-based eligibility, service
 ## My role and development tools
 I defined the administrative problem, confidentiality boundaries, workflow, sample-data requirements, and visual direction. I used Perplexity to help translate those requirements into code, draft documentation and test cases, and run automated checks.
 
-The prototype uses HTML, CSS, and JavaScript, with GitHub for version control and Vercel for hosting. I reviewed the proposed scope and changes before publication. I do not claim every line was manually written. Perplexity ran the six automated tests; my own full browser and export verification remains pending.
+The prototype uses HTML, CSS, and JavaScript, with GitHub for version control and Vercel for hosting. I reviewed the proposed scope and changes before publication. I do not claim every line was manually written. Perplexity ran the six automated tests and visually reviewed supplied screenshots and a sample report; full browser and export verification remains pending.
 
 ## Files and verification
 `index.html` and `styles.css`: interface. `rules.js`: fictional configuration and samples. `calculator.js`: validation, integer-cent calculations, CSV. `app.js`: interaction and PNG rendering. `calculator.test.js`: tests. `package.json`: ES modules and test command.
@@ -53,13 +63,15 @@ The prototype uses HTML, CSS, and JavaScript, with GitHub for version control an
 With Node.js 20+ installed, run `npm test`. Six initial tests passed, covering sample outputs, totals, revenue and quality boundaries, rounding, invalid data, and basic CSV handling. This is not complete browser or security verification.
 
 Manual verification checklist:
-- [ ] Confirm six bonuses, four eligible employees, and HK$251,782.71 total.
+- [ ] Confirm six bonuses, four eligible employees, and HK$251,782.71 total through a complete browser run.
 - [ ] Check empty, negative, malformed, excessive-precision, and excessive-value inputs.
 - [ ] Confirm editing invalidates results and reset restores samples.
 - [ ] Compare screen, CSV, and PNG results and decimal cents.
-- [ ] Check full PNG content, readability, and download behaviour.
+- [ ] Check full PNG content, readability, and download behaviour across intended browsers.
 - [ ] Open CSV in the intended spreadsheet application.
 - [ ] Check keyboard navigation, focus, announcements, narrow screens, and console errors.
+
+Visual review of supplied images does not mark these full interaction checks complete.
 
 ## Ownership and reuse
 This project is published for portfolio review and demonstration. No open-source licence is granted. Except where permitted by applicable law or GitHub's terms, permission is required to reproduce, redistribute, or adapt protected project materials. Please do not present this project as your own work.
