@@ -1,7 +1,7 @@
 # Bonus Calculator Demo
 ### Bonus, Explained.
 
-Designed by Sophie Tai · Built with AI assistance.
+Designed by Sophie Tai · Built with Perplexity.
 
 A core administrative workflow prototype: load fictional data, apply consistent rules, understand results, and export a report.
 
@@ -42,8 +42,10 @@ Plain HTML, CSS, and modular JavaScript separate rules, calculations, and intera
 
 Possible adaptations—not implemented—include role-based eligibility, service-period adjustments, alternative qualification routes, approved exceptions, reporting periods, and custom report fields. Each needs separate requirements and verification.
 
-## My role and AI assistance
-I defined the administrative problem, confidentiality boundaries, workflow, first-name-only samples, monetary inputs, image export requirement, and visual direction. AI proposed the fictional rules and assisted with implementation, tests, and documentation. I do not claim every line was manually written. The AI assistant ran the six automated tests; my own full browser and export checks remain pending.
+## My role and development tools
+I defined the administrative problem, confidentiality boundaries, workflow, sample-data requirements, and visual direction. I used Perplexity to help translate those requirements into code, draft documentation and test cases, and run automated checks.
+
+The prototype uses HTML, CSS, and JavaScript, with GitHub for version control and Vercel for hosting. I reviewed the proposed scope and changes before publication. I do not claim every line was manually written. Perplexity ran the six automated tests; my own full browser and export verification remains pending.
 
 ## Files and verification
 `index.html` and `styles.css`: interface. `rules.js`: fictional configuration and samples. `calculator.js`: validation, integer-cent calculations, CSV. `app.js`: interaction and PNG rendering. `calculator.test.js`: tests. `package.json`: ES modules and test command.
@@ -62,7 +64,7 @@ Manual verification checklist:
 ## Ownership and reuse
 This project is published for portfolio review and demonstration. No open-source licence is granted. Except where permitted by applicable law or GitHub's terms, permission is required to reproduce, redistribute, or adapt protected project materials. Please do not present this project as your own work.
 
-Project attribution: Sophie Tai, with AI assistance. This notice does not claim exclusive rights over unprotectable ideas, mathematical concepts, third-party materials, or material not eligible for copyright protection. Attribution and reuse notices do not technically prevent copying or override GitHub's public-repository permissions. The name has not been checked for trademark availability.
+Project attribution: Sophie Tai, built with Perplexity. This notice does not claim exclusive rights over unprotectable ideas, mathematical concepts, third-party materials, or material not eligible for copyright protection. Attribution and reuse notices do not technically prevent copying or override GitHub's public-repository permissions. The name has not been checked for trademark availability.
 
 ## Privacy and limitations
 All rules and samples are fictional and independently authored for the demo. No private work-repository files were copied. Do not enter real employee data. The app has no database, persistence, analytics, external calculation API, authentication, approvals, or audit history. Hosting providers may retain normal access logs; downloaded reports remain on the visitor's device.
