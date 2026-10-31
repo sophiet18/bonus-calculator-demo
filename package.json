@@ -1,0 +1,8 @@
+{
+  "name": "bonus-calculator-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test calculator.test.js"
+  }
+}

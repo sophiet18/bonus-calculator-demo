@@ -1,0 +1,1 @@
+Review status: all six automated Node.js tests passed. Browser, accessibility, spreadsheet, and PNG visual checks remain pending. No files have been pushed or deployed. README status wording was updated to reflect the completed automated run. Application source is unchanged from the uploaded files.

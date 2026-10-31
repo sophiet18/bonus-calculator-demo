@@ -1,0 +1,2 @@
+export const rules={version:'demo-2.0',period:'September 2026',qualityMinimum:90,minimumCents:10000000,higherTierCents:50000000,standardPercent:8,higherPercent:12};
+export const samples=[['EX-001','Avery','85420.75','96.0'],['EX-002','Jordan','100000.00','90.0'],['EX-003','Casey','428765.50','94.5'],['EX-004','Morgan','500000.00','95.0'],['EX-005','Riley','975350.80','89.5'],['EX-006','Taylor','1245678.90','98.0']].map(([id,name,revenue,quality])=>({id,name,revenue,quality}));

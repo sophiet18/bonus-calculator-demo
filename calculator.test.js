@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {samples} from './rules.js';import {calculate,parseCents,makeCSV,csvCell} from './calculator.js';
+const calc=(revenue,quality='90')=>calculate({id:'EX',name:'Avery',revenue,quality});
+test('samples and total',()=>{const r=samples.map(calculate);assert.deepEqual(r.map(x=>x.bonusCents),[0,800000,3430124,6000000,0,14948147]);assert.equal(r.reduce((s,x)=>s+x.bonusCents,0),25178271);assert.equal(r.filter(x=>x.eligible).length,4);});
+test('cent precision and thresholds',()=>{assert.equal(parseCents('0.01'),1);assert.equal(calc('99999.99').bonusCents,0);assert.equal(calc('100000').bonusCents,800000);assert.equal(calc('499999.99').rate,8);assert.equal(calc('500000').rate,12);});
+test('quality boundaries',()=>{assert.equal(calc('500000','89.9').bonusCents,0);assert.equal(calc('500000','90').bonusCents,6000000);assert.equal(calc('500000','90.1').bonusCents,6000000);});
+test('rounding below and above half a cent',()=>{assert.equal(calc('100000.06').bonusCents,800000);assert.equal(calc('100000.07').bonusCents,800001);});
+test('reject invalid data',()=>{for(const v of ['','-1','1.234','NaN','Infinity','1e6','1,000','1000000000.01'])assert.throws(()=>parseCents(v));for(const q of ['','-1','100.1','90.01','NaN'])assert.throws(()=>calc('500000',q));});
+test('CSV quoting and formula handling',()=>{assert.equal(csvCell('a"b'),'"a""b"');assert.ok(csvCell('=1+1').includes("'="));const csv=makeCSV(samples.map(calculate));assert.ok(csv.includes('251782.71'));assert.ok(csv.includes('149481.47'));assert.ok(csv.includes('demo-2.0'));});
