@@ -11,11 +11,25 @@ A core administrative workflow prototype: load fictional data, apply consistent 
 
 Use fictional sample data only. Changes are not saved.
 
+## Interface walkthrough
+
+### Opening screen
+
+![Opening screen of Bonus, Explained.](Screenshot_20261031_232609_Firefox.jpg)
+
+Opening screen introducing the fictional administrative workflow prototype.
+
+### Sample data loaded
+
+![Calculator with fictional employee data loaded before calculation](Screenshot_20261031_232709_Firefox.jpg)
+
+Sample data loaded for six fictional employees, ready for input adjustments and bonus calculation.
+
+These are interface screenshots, not a full-page capture or an exported report. An exported report image is not included in this README.
+
 ## Verification status
 
 Six automated Node.js tests passed in the initial review. Supplied calculator screenshots and an example exported report have been visually reviewed. This is not complete end-to-end browser verification. CSV spreadsheet compatibility, invalid-input browser behaviour, keyboard navigation, and broader browser checks remain pending.
-
-Screenshot uploads to this repository are pending. The selected calculator image shows the sample-data-loaded stage, not calculated results; the exported report is a separate output example.
 
 ## The problem
 Rule-based administration involves checking inputs, calculating eligibility, explaining outcomes, and preparing reports. This prototype brings those steps into one small workflow rather than attempting to become a payroll product. No measured time savings or accuracy improvements are claimed.
